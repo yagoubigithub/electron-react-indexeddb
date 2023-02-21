@@ -1,0 +1,121 @@
+{
+  "name": "electronreactindexeddb",
+  "version": "0.0.1",
+  "author": "yagoubi abdelkader <yagoubi.aek.2@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrenner-ML/savedtime.git"
+  },
+  "private": true,
+  "main": "./electron/index.js",
+  "homepage": "./",
+  "build": {
+    "npmRebuild": false,
+    "appId": "com.electron.react.indexedDb",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "mrenner-ML",
+        "repo": "savedtime",
+        "private": true
+      }
+    ],
+    "files": [
+     
+      "build/**/*",
+      "node_modules/**/*",
+      {
+        "from": "build",
+        "to": "build",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "build",
+        "to": "build",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "icon": "public/img/logo-win.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "icon": "public/img/logo-mac.icns"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": true,
+      "uninstallDisplayName": "savedtime",
+      "license": "license.txt",
+      "language": 1033,
+      "displayLanguageSelector": false
+    },
+    "linux": {
+      "icon": "public/img/logo-linux.icns",
+      "target": [
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "productName": "electron-react-indexedDb",
+    "copyright": "yagoubi abdelkader"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    
+    "react": "^18.2.0",
+  
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "react-scripts": "5.0.1",
+  
+  
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "rebuild": "electron-rebuild  -f",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "electron": "wait-on tcp:3000 && electron ."
+  },
+  
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      "last 1 electron version"
+    ],
+    "development": [
+      "last 1 electron version"
+    ]
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.2.10",
+    "concurrently": "^7.5.0",
+    "electron": "^21.2.2",
+    "electron-devtools-installer": "git+https://github.com/MarshallOfSound/electron-devtools-installer.git",
+    "electron-is-dev": "^2.0.0",
+    "wait-on": "^6.0.1"
+  }
+}
